@@ -1,0 +1,9 @@
+services:
+  react-app:
+    image: istudios-container
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./:/usr/src/app:delegated"
+      - "/usr/src/app/node_modules/"
