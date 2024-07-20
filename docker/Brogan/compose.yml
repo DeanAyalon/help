@@ -1,0 +1,14 @@
+services:
+  react-app:
+    build: .
+    image: istudios-container
+    stdin_open: true
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/usr/src/app:delegated
+      - brogan:/usr/src/app/node_modules/
+    command: tail -f /dev/null
+
+volumes:
+  brogan:
