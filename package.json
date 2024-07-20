@@ -1,0 +1,13 @@
+{
+  "name": "karthik18_34101",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo penis",
+    "serve": "tail -f /dev/null"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
