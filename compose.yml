@@ -1,6 +1,42 @@
 services:
-  react-vite:
-    image: react-vite
-    build: .
+  server_app:
+    build:
+      context: ./backend
+      dockerfile: docker/server_app/Dockerfile
     volumes:
-      - .:/app
+      - .:/var/www/loopscoop
+    ports:
+      - 8090:8090
+    networks:
+      - loopscoop_network
+
+  mongo:
+    image: mongo
+    env_file:
+      - ./backend/docker/database/.env
+    ports:
+      - 27018:27017
+    volumes:
+      - /opt/loopscoop_mongo_data:/data/db
+    networks:
+      - loopscoop_network
+
+  frontend_app:
+    build:
+      context: ./frontend
+      dockerfile: docker/Dockerfile
+    ports:
+      - "3001:3000"
+    networks:
+      - loopscoop_network
+
+  frontend-dev:
+    profiles: 
+      - dev    # Will not be composed by default, unless you specify the service, or the profile
+    extends: frontend_app
+    volumes:
+      - ./frontend:/app
+
+networks:
+  loopscoop_network:
+    driver: bridge
