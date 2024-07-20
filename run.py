@@ -69,10 +69,11 @@ class ChessGUI:
                 piece = self.board.piece_at(square)
                 if piece:
                     img = self.images[piece.symbol()]
-                    self.squares[(row, col)].config(image=img)
+                    print(img)
+                    self.squares[(row, col)].config(image = img, height = 74, width = 74)
                     self.squares[(row, col)].image = img
                 else:
-                    self.squares[(row, col)].config(image="", text="")
+                    self.squares[(row, col)].config(image="", text="", height = 4, width = 8)
 
     def on_click(self, row, col):
         square = chess.square(col, 7 - row)
