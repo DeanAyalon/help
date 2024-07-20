@@ -1,0 +1,6 @@
+services:
+  react-vite:
+    image: react-vite
+    build: .
+    volumes:
+      - .:/app
