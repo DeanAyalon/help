@@ -5,15 +5,30 @@ import tkinter as tk
 from tkinter import messagebox
 from PIL import Image, ImageTk
 
+# .env
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 class ChessGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("Chess Game")
         self.board = chess.Board()
-        self.engine = chess.engine.SimpleEngine.popen_uci("/Users/oriohana/Desktop/dsf/stockfish/stockfish-macos-m1-apple-silicon")
+        stockfish = self.get_stockfish()
+        self.engine = chess.engine.SimpleEngine.popen_uci(stockfish)
         self.selected_square = None
         self.create_widgets()
         self.update_board()
+
+    def get_stockfish(self):
+        path = os.getenv('STOCKFISH_PATH')
+        # Check if the path is empty
+        if not path.strip(): raise ValueError("Stockfish path is empty.")
+        # Check if the file exists
+        if not os.path.isfile(path): raise FileNotFoundError(f"Stockfish executable does not exist at {path}")
+        print('stockfish: ' + path)
+        return path
 
     def create_widgets(self):
         self.board_frame = tk.Frame(self.root)
