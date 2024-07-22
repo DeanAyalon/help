@@ -1,0 +1,27 @@
+services:
+
+  backend:
+    container_name: backend
+    image: backend
+    env_file:
+      - dev.env
+    build:
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "8000:8080"
+
+  frontend:
+    container_name: frontend
+    image: frontend
+    env_file:
+      - dev.env
+    build:
+      context: gui
+      dockerfile: Dockerfile
+    user: "node"
+    restart: unless-stopped
+    ports:
+      - 7000:3000
+    depends_on:
+      - backend
