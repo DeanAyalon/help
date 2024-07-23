@@ -1,0 +1,5 @@
+services:
+  myservice1:
+    image: bash
+    depends_on:
+        - myservice2
