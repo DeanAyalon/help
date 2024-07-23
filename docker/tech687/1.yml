@@ -1,0 +1,8 @@
+services:
+  myservice1:
+    # image: bash
+    # depends_on:
+    #     - myservice2
+    extends:
+      file: 2.yml
+      service: myservice2
