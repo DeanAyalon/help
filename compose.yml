@@ -1,0 +1,9 @@
+services:
+  proxy:
+    image: ubuntu/squid:5.2-22.04_beta
+    ports:
+      - 0.0.0.0:3128:3128
+    environment:
+      TZ: America/Sao_Paulo
+    volumes:
+      - ./etc:/etc/squid
