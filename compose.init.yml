@@ -1,0 +1,6 @@
+services:
+  proxy:
+    image: ubuntu/squid:5.2-22.04_beta
+    volumes:
+      - ./etc/squid:/host
+    entrypoint: ["cp", "-r", "/etc/squid", "/host"]

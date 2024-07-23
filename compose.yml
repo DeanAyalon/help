@@ -6,4 +6,4 @@ services:
     environment:
       TZ: America/Sao_Paulo
     volumes:
-      - ./etc:/etc/squid
+      - ./etc/squid:/etc/squid
