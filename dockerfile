@@ -5,11 +5,11 @@ RUN apt-get update && apt-get install -y \
     build-essential \
     software-properties-common
 RUN pip install pipenv
-COPY Pipfile /app/Pipfile
+# COPY Pipfile /app/Pipfile
 WORKDIR /app
-RUN pipenv lock
-RUN pipenv requirements > requirements.txt
-RUN pip install -r requirements.txt
+# RUN pipenv lock
+# RUN pipenv requirements > requirements.txt
+# RUN pip install -r requirements.txt
 COPY . /app
 EXPOSE 8501
 HEALTHCHECK CMD curl --fail http://localhost:8501/_stcore/health

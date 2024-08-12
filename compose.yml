@@ -1,7 +1,7 @@
-version: "3.9"
 services:
   bidataviewer_app:
     container_name: bidataviewer_app
+    image: help/competitive-ask-9998
     build: .
     volumes:
       - .:/app                            # Mount the current directory into /app inside the container
@@ -9,3 +9,5 @@ services:
     restart: "unless-stopped"
     ports:
       - "55701:8501"
+    stop_grace_period: 0s
+    entrypoint: tail -f /dev/null
