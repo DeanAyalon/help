@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  bidataviewer_app:
+    container_name: bidataviewer_app
+    build: .
+    volumes:
+      - .:/app                            # Mount the current directory into /app inside the container
+      - ./.streamlit:/root/.streamlit     # Mount the .streamlit directory for configuration
+    restart: "unless-stopped"
+    ports:
+      - "55701:8501"
