@@ -1,0 +1,8 @@
+services:
+  projectA:
+    build: 
+      context: ../project a
+      dockerfile: Dockerfile
+      platforms:
+        - linux/arm64
+        - linux/amd64
