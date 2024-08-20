@@ -4,5 +4,5 @@ services:
     build:
       context: .
     container_name: container-name
-    devices:
-      - "/dev/snd:/dev/snd"
+    # devices:
+    #   - "/dev/snd:/dev/snd"
