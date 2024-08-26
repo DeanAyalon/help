@@ -1,0 +1,23 @@
+services:
+  nginx:
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80" #http, will be redirected to https, check nginx.conf file
+      - "443:443" #https
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./nginx/certs:/etc/nginx/certs:rw
+      - ./nginx/vhost.d:/etc/nginx/vhost.d
+      - ./nginx/html:/usr/share/nginx/html
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    labels:
+      - "com.github.nginx-proxy.docker-gen=true"
+    depends_on:
+      - api
+      - angular
+
+  api:
+    image: alpine
+  angular:
+    image: alpine
