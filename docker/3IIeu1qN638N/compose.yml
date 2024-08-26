@@ -1,0 +1,8 @@
+services:
+  service-name:
+    image: debian:bookworm-slim
+    build:
+      context: .
+    container_name: container-name
+    # devices:
+    #   - "/dev/snd:/dev/snd"
