@@ -2,3 +2,6 @@
 
 # Problem
 nginx-proxy not recognizing docker.sock
+
+# Solution
+Container path was set to `/tmp/run/docker.sock` instead of `/tmp/docker.sock`
