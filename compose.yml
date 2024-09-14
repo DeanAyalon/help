@@ -1,0 +1,5 @@
+services:
+  node:
+    image: jackdeaniels/help:harikishna
+    build: .
+    container_name: help-node
