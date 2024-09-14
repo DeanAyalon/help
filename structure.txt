@@ -1,0 +1,15 @@
+event-driven-microservices/
+│
+├── docker-compose.yml # File for lifting RabbitMQ and microservices
+│
+├─── producer_service/ # Microservice A (Message Producer)
+│ ├─── Dockerfile # Docker image definition for producer
+│ ├─── requirements.txt # Producer dependencies (Flask, pika)
+│ └└── app.py # Producer microservice code
+│
+├── consumer_service/ # Microservice B (Message consumer)
+│ ├─── Dockerfile # Docker image definition for consumer
+│ ├─── requirements.txt # Consumer dependencies (pika)
+│ └└── app.py # Consumer microservice code
+│
+└└──── README.md # Project documentation

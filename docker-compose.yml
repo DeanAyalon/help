@@ -1,0 +1,38 @@
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    ports:
+      - "15672:15672"  # Web interface to manage RabbitMQ
+      - "5672:5672"    # Port for RabbitMQ connections (from services)
+      - "15692:15692"  # Port for Prometheus metrics
+    environment:
+      RABBITMQ_DEFAULT_USER: user
+      RABBITMQ_DEFAULT_PASS: password
+    command: rabbitmq-server -vv
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf  # Mount configuration file
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+  producer_service:
+    build: ./producer_service
+    container_name: producer_service
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./producer_service:/app  # Mount the producer service directory
+    depends_on:
+      - rabbitmq
+
+  consumer_service:
+    build: ./consumer_service
+    container_name: consumer_service
+    volumes:
+      - ./consumer_service:/app  # Mount the consumer service directory
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
