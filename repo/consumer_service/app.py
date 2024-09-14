@@ -4,7 +4,11 @@ import time
 # Retry logic for connecting to RabbitMQ
 for _ in range(10):
     try:
-        connection = pika.BlockingConnection(pika.ConnectionParameters('rabbitmq'))  # 'rabbitmq' is the name of the service in Docker
+        # 'rabbitmq' is the name of the service in Docker
+        connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host = 'rabbitmq', 
+            credentials = pika.PlainCredentials('user', 'password'))
+        )
         break
     except pika.exceptions.AMQPConnectionError:
         print("Connection failed, retrying in 5 seconds...")
