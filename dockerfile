@@ -28,7 +28,10 @@ WORKDIR /usr/src/app
 COPY . .
 
 # Remove any existing node_modules (in case they were copied from host)
-RUN rm -rf server/node_modules client/node_modules
+    # node_modules are automatically ignored (.dockerignore immitates .gitignore)
+# RUN rm -rf server/node_modules client/node_modules
+    # Removes the dependencies - cause of the error
+    # Also does not conserve space, as the underlying layer installing the dependencies already exists
 
 # Expose the port (change it if your app uses a different port)
 EXPOSE 6969

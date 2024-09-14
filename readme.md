@@ -2,3 +2,12 @@
 
 # Problem
 Getting error 'express not found'
+
+## Cause
+OP's dockerfile has the step:
+```dockerfile
+RUN rm -rf server/node_modules client/node_modules
+```
+This removes all installed dependencies...
+
+> OP is still getting the same error
