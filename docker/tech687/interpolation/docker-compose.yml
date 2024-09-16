@@ -1,0 +1,12 @@
+services:
+    test:
+        image: bash
+        volumes:
+            - type: bind
+              source: ${COMPOSER_VENDOR_DIR-vendor}
+              target: /app/vendor
+        env_file:
+          - path: tmp.env
+            required: true
+volumes:
+    vendor:
