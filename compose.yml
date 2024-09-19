@@ -1,0 +1,7 @@
+services:
+  test:
+    extends: 
+      file: tools/compose.yml
+      service: dummy
+    image: deanayalon/help:dollarnavalex
+    build: .
