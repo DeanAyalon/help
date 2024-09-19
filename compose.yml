@@ -1,0 +1,7 @@
+services:
+  test:
+    image: deanayalon/help:eljk
+    build: .
+    container_name: test
+    command: tail -f /dev/null
+    stop_grace_period: 0s
