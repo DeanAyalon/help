@@ -3,3 +3,6 @@
 # Problem
 OP wants to use images specified by hash instead of tag, to be sure the version is never changed.
 At the same time, OP wants to create a custom tag for the image, so that the image is readable.
+
+## Proposed Solution
+inline dockerfile generating a custom image from the given hash
