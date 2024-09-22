@@ -18,3 +18,6 @@ services:
       - ./volume1/docker/mosquitto/log:/mosquitto/log
     environment:
       - TZ=Europe/Paris
+
+  alt:
+    image: eclipse-mosquitto:custom-tag@sha256:f43889926d948c1146751bce701373b71c16a81e5de9b2986b7589221fa4d9e9

@@ -7,3 +7,9 @@ At the same time, OP wants to create a custom tag for the image, so that the ima
 ## Proposed Solution
 inline dockerfile generating a custom image from the given hash
 > Not working for OP - Not a configuration problem, compose version perhaps?
+
+## Alternative
+`image: image:custom-tag@hash` works for the container instance
+**However** 
+- The tag used is `custom-tag@hash` instead of just `custom-tag`
+- Running `docker image ls` does not show the custom tag
