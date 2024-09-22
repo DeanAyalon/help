@@ -6,3 +6,4 @@ At the same time, OP wants to create a custom tag for the image, so that the ima
 
 ## Proposed Solution
 inline dockerfile generating a custom image from the given hash
+> Not working for OP - Not a configuration problem, compose version perhaps?
