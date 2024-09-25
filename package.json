@@ -1,0 +1,11 @@
+{
+  "name": "help",
+  "version": "1.0.0",
+  "description": "[source](https://stackoverflow.com/questions/79022036/how-do-i-use-angular-cli-inside-a-dockerized-app)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
