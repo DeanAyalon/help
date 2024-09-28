@@ -1,0 +1,4 @@
+services:
+  fusionauth:
+    image: deanayalon/help:emaborse
+    build: .

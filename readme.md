@@ -8,3 +8,5 @@ env: can’t execute ‘bash’: No such file or directory.
 
 ## Proposed Solution
 If possible, one should use a separate container for the proxy
+## Reason for Error
+OP misunderstood multi-stage builds, their final image was based off `nginx:alpine`, which does not have bash installed, and thus cannot run the `fusionauth` scripts
