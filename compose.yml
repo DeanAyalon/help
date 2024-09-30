@@ -1,0 +1,10 @@
+services:
+  imapsync:
+    container_name: imapsync
+    ports: 
+    - 12580:8080 
+    restart: unless-stopped
+    image: gilleslamiral/imapsync
+    volumes:
+        - /usr/bin/imapsync/imapsync_form_extra.html:/var/tmp/imapsync_form_extra.html \
+        - /usr/bin/imapsync_cgi:/var/tmp/imapsync_cgi  \
