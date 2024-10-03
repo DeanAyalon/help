@@ -1,0 +1,7 @@
+name: help
+services:
+  help:
+    image: deanayalon/help:ned4
+    build: .
+    container_name: help-ned4
+    stop_grace_period: 0s
