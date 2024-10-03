@@ -1,0 +1,7 @@
+FROM alpine
+
+RUN apk add docker
+
+RUN --mount=type=bind,from=run,source=docker.sock,target=/var/run/docker.sock docker ps > ps
+
+CMD cat ps
