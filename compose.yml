@@ -1,0 +1,5 @@
+services:
+  build-sock:
+    image: deanayalon/tests:build-sock
+    build: .
+    container_name: test-build-sock
