@@ -1,5 +1,15 @@
 services:
-  build-sock:
+  prep:
+    image: alpine/socat
+    container_name: test-build-prep
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    #  -v //var/run/docker.sock://var/run/docker.sock 
+    ports:
+      - 2375:2375
+    command: tcp-listen:2375,reuseaddr,fork unix-connect:/var/run/docker.sock
+
+  build:
     image: deanayalon/tests:build-sock
     build: .
     container_name: test-build-sock
