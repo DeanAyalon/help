@@ -2,3 +2,5 @@
 
 # Problem 
 Build fails installing `libvtk9.1-qt`
+## Proposed Solution
+`apt-get update`
