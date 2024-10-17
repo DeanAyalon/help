@@ -1,0 +1,3 @@
+[submodule "vastlim-src"]
+	path = src
+	url = https://github.com/hackingthemarkets/interactive-brokers-web-api.git
