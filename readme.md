@@ -2,4 +2,5 @@
 
 # Problem
 Compose does not recognize volume name
-> Could not replicate
+## Cause
+Wrong YAML formatting
