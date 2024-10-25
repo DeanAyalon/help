@@ -1,10 +1,8 @@
 version: '3'
 services:
-
   backend:
-    # image: itay016/claimz_landing_page:latest
+    image: itay016/claimz_landing_page
     build: . 
-
     env_file: .prod.env
     volumes:
         - ./static:/static
@@ -16,14 +14,14 @@ services:
              python manage.py runserver 0.0.0.0:8000"
     ports:
       - "8000:8000"
-
     networks: 
-        - common-network      
+        - common-network
     dns:
       - 8.8.8.8
-      - 8.8.4.4      
+      - 8.8.4.4
+
   nginx:
-      image: jonasal/nginx-certbot:latest
+      image: jonasal/nginx-certbot
       restart: unless-stopped
       env_file:
         - ./nginx-certbot.env
@@ -37,16 +35,15 @@ services:
         - ./user_conf.d:/etc/nginx/user_conf.d
       depends_on:
         - backend
-      networks: 
-              - common-network
+      networks:
+        - common-network
       dns:
       - 8.8.8.8
-      - 8.8.4.4 
+      - 8.8.4.4
+
 networks:
     common-network:
         external: true
-  
-
 
 volumes:
     certbot:

@@ -4,6 +4,9 @@
 
 # Problem
 Django cannot communicate with SMTP server
+## Cause
+Cause of error was a wrong environment variable value:
+`'smtp.gmail.com'` instead of `smtp.gmail.com`
 
 # User - Itay Yair
 - [Telegram](https://t.me/itay016)
