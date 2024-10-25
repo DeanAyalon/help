@@ -1,0 +1,53 @@
+version: '3'
+services:
+
+  backend:
+    # image: itay016/claimz_landing_page:latest
+    build: . 
+
+    env_file: .prod.env
+    volumes:
+        - ./static:/static
+        - ./media:/media
+        - ./db.sqlite3:/db.sqlite3
+    restart: always
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    ports:
+      - "8000:8000"
+
+    networks: 
+        - common-network      
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4      
+  nginx:
+      image: jonasal/nginx-certbot:latest
+      restart: unless-stopped
+      env_file:
+        - ./nginx-certbot.env
+      ports:
+        - 80:80
+        - 443:443
+      volumes:
+        - ./static:/static
+        - ./media:/media
+        - nginx_secrets:/etc/letsencrypt
+        - ./user_conf.d:/etc/nginx/user_conf.d
+      depends_on:
+        - backend
+      networks: 
+              - common-network
+      dns:
+      - 8.8.8.8
+      - 8.8.4.4 
+networks:
+    common-network:
+        external: true
+  
+
+
+volumes:
+    certbot:
+    nginx_secrets:
