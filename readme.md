@@ -2,3 +2,4 @@
 
 # Problem 
 OP builds a new image, but the container does not execute their defined ENTRYPOINT
+> Works for me, has OP rebuilt their image?
