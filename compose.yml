@@ -1,0 +1,20 @@
+services:
+  reticulum:
+    build:
+        dockerfile_inline: |
+          FROM node:lts-alpine
+          ENV PYTHONUNBUFFERED=1
+          #install pip then rns if pip successfully installed
+          RUN apk add --update --no-cache python3 py3-pip && pip install --break-system-packages rns
+          ENTRYPOINT ["rnsd", "--verbose"]
+    init: true
+    tty: true #to keep it running
+    container_name: "reticulum"
+    configs:
+      - source: config
+        target: /root/.reticulum/config
+    restart: unless-stopped
+configs:
+  config:
+    content: |
+        # This is the default Reticulum config file.
