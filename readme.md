@@ -2,3 +2,4 @@
 
 # Problem
 Build fails, `package.json` not found
+> It seems `npm create vite@latest . --template vanilla --yes` still prompts for user interaction

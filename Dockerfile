@@ -6,7 +6,7 @@ RUN npm install -g create-vite
 
 RUN npm create vite@latest . --template vanilla --yes
 
-RUN npm install
+# RUN npm install
 
 EXPOSE 3000
 

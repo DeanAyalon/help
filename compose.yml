@@ -1,10 +1,9 @@
-version: '3'
-
 services:
   vite:
+    image: deanayalon/help:aymanelh
     build: .
-    volumes:
-      - ./:/app
+    # volumes:
+    #   - ./:/app
     ports:
       - "3000:3000"
     container_name: "vite-project"
