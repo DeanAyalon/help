@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  web-app1:
+    build: ./website1
+    ports:
+    - 9000:80
+  web-app2:
+    build: ./website2
+    ports:
+    - 5000:50
